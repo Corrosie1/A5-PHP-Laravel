@@ -36,4 +36,15 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function roles(){
+      return $this->belongsToMany('App\Role');
+      /* ^
+        Zorgt voor de juiste relatie naar de Role model 
+        de functie "belongsToMany" wordt gebruikt omdat dit een
+        many to many relatie is (ook vice versa), dat wil zeggen dat een rol
+        meerdere gebruikers kan hebben, en meerdere gebruikers een rol kunnen hebben
+      */
+      // reverse van App\Role.php
+    }
 }
