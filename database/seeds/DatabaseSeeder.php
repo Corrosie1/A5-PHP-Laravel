@@ -13,5 +13,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(RolesTableSeeder::class);
         $this->call(UsersTableSeeder::class);
+
+      // vanuit hier worden alle seeders aangeroepen (dus hetgeen wat de database tabellen voorziet van data)
     }
 }
