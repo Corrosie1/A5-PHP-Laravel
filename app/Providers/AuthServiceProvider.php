@@ -26,7 +26,7 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         Gate::define('manage-users', function($user){
-          return $user->hasAnyRoles(['admin', 'pop']);
+          return $user->hasRole('admin');
         });
         /* ^
         Hier wordt de gate 'manage-users' aangemaakt.
@@ -56,5 +56,8 @@ class AuthServiceProvider extends ServiceProvider
         Voor de huidige ingelogde gebruiker is er een Gate gemaakt (dit geeft toegang tot een bepaalde sectie van een website)
         om de gate 'delete-users' binnen te mogen komen, moet een gebruiker de rol 'admin' hebben
         */
+        Gate::define('edit-own-user', function($user){
+          return $user->hasAnyRoles(['pop', 'rap', 'hardstyle', 'user']);
+        });
     }
 }

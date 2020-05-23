@@ -6,6 +6,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use Auth;
 use App\User;
 use App\Role;
 use Gate;
@@ -25,6 +26,10 @@ class UsersController extends Controller{
     public function index(){
         $users = User::all();
         // ^ Haalt alle users uit de tabel 'users'
+        if (Gate::denies('manage-users')){
+            return redirect(route('home'));
+        }
+        // ^ Wanneer de rol (in dit geval alleen admin) geen recht heeft op de gate 'manage-users' wordt deze geredirect naar de home route
         return view('admin.users.index')->with('users', $users);
         /* ^
         view bestand bevindt zich in /resources/views/admin/users/index.blade.php
@@ -45,26 +50,29 @@ class UsersController extends Controller{
     // }
 
     // public function show(User $user){
-    // Note:
-    // Deze functie is niet nodig omdat alle gebruikers in de index getoond worden.
+    //
     // }
 
     public function edit(User $user){
+      $roles = Role::all();
+      $auth = Auth::user();
+
       if (Gate::denies('edit-users')){
-        return redirect(route('admin.users.index'));
-      };
+        if (Gate::denies('edit-own-user')){
+            return redirect(route('home'));
+        }
+      }
       /* ^
       Als de user een rol heeft van 'admin' (zie App/Providers/AuthserviceProvider) voor de gemaakte gate
       wordt de route 'admin.users.edit' gereturned (bewerken van de user wordt mogelijk gemaakt - zie view van de index page - edit button)
 
       Wanneer de gebruiker de rol 'admin' niet heeft gebeurt er niks en blijft de user op dezelfde pagina (index pagina)
       */
-        $roles = Role::all();
-
 
         return view('admin.users.edit')->with([
           'user' => $user,
-          'roles' => $roles
+          'roles' => $roles,
+          'auth' => $auth,
         ]);
         /* ^
           de $user variabele wordt meegegeven aan de edit page, de gegevens die hierin staan zijn als volgt:
