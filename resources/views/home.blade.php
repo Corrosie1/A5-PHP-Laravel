@@ -43,14 +43,11 @@
                       </ul>
                     </small></p>
                     <div>
-                      <a href="">
-                        <button class="btn btn-dark ml-1" type="button" name="button">Pop EPK</button>
+                      <a href="{{route('epk.index')}}">
+                        <button class="btn btn-dark ml-1" type="button" name="button">EPK Overzicht</button>
                       </a>
-                      <a href="">
-                        <button class="btn btn-primary ml-1" type="button" name="button">Rap EPK</button>
-                      </a>
-                      <a href="">
-                        <button class="btn btn-success ml-1" type="button" name="button">Hardstyle EPK</button>
+                      <a href="{{route('epk.create')}}">
+                        <button class="btn btn-primary ml-1" type="button" name="button">EPK aanmaken</button>
                       </a>
                     </div>
                     <div class="mt-4 ml-1">
@@ -65,7 +62,7 @@
         <div class="col-md-4">
           <div>
             <h3>Pop music</h3>
-            <img class="rounded" width="150" src="./images/pop.jpg">
+            <img class="rounded" width="150" src="{{ asset('images/pop.jpg') }}">
             <p>
               <small>
                 Micheal Jackson
@@ -74,7 +71,7 @@
           </div>
           <div class="mt-3">
             <h3>Rap music</h3>
-            <img class="rounded" width="200" src="./images/rap.jpg">
+            <img class="rounded" width="200" src="{{ asset('images/rap.jpg') }}">
             <p>
               <small>
                 Eminem
@@ -83,7 +80,7 @@
           </div>
           <div class="mt-3">
             <h3>Hardstyle music</h3>
-            <img class="rounded" src="./images/hardstyle.jpg">
+            <img class="rounded" src="{{ asset('images/hardstyle.jpg') }}">
             <p>
               <small>
                 Yellow Claw

@@ -14,15 +14,6 @@ use Illuminate\Http\Request;
 
 class UsersController extends Controller{
 
-    public function __construct(){
-      $this->middleware('auth');
-    }
-    /* ^
-      Wanneer 1 van ONDERSTAANDE functies wordt aangeroepen (doormiddel van een route) zorgt bovenstaande functie/constructor ervoor
-      dat er eerst word gekeken of de gebruiker ingelogd is.
-      Wanneer dit niet zo is wordt deze geredirect naar de login pagina.
-    */
-
     public function index(){
         $users = User::all();
         // ^ Haalt alle users uit de tabel 'users'

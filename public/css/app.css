@@ -10882,3 +10882,7 @@ a.text-dark:focus {
   }
 }
 
+.background-mda {
+  background-size: cover;
+  background-repeat: no-repeat;
+}

@@ -29,18 +29,8 @@ class AuthServiceProvider extends ServiceProvider
           return $user->hasRole('admin');
         });
         /* ^
-        Hier wordt de gate 'manage-users' aangemaakt.
-        Ter voorbeeld gebruiken we nu de functie hasAnyRoles() (zie app\User.php voor de functie)
-
-        wanneer de gebruiker de rol(len) admin en/of pop heeft, dan wordt er toegang gegeven tot de gate manage-users en daarmee een nieuwe pagina of deel van de pagina
-        Wanneer de gebruiker geen rol heeft die gelijk staat aan 'admin' of 'pop' wordt false gereturned en daarmee geen toegang (code 403) of geen toegang tot een deel
-        van de pagina
-
-        Wanneer er sprake is van geen toegang tot een bepaald gedeelte van de pagina
-        - controleer de desbetreffende views
-
-        Wanneer er sprake is van een 403 error (forbidden)
-        - controleer Routes\web.php
+        Voor de huidige ingelogde gebruiker is er een Gate gemaakt (dit geeft toegang tot een bepaalde sectie van een website)
+        om de gate 'manage-users' binnen te mogen komen, moet een gebruiker de rol 'admin' hebben
         */
         Gate::define('edit-users', function($user){
           return $user->hasRole('admin');
@@ -59,5 +49,26 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('edit-own-user', function($user){
           return $user->hasAnyRoles(['pop', 'rap', 'hardstyle', 'user']);
         });
+        /* ^
+        bovenstaande rollen hebben het recht om hun eigen rollen aan te passen (admin kan alles aanpassen) - zie de gate edit-users
+        */
+        Gate::define('manage-epk-pop', function($user){
+          return $user->hasAnyRoles(['pop', 'admin']);
+        });
+        /* ^
+        Juiste EPK pop content worden weergegeven aan de users met de rollen: 'pop' of admin
+        */
+        Gate::define('manage-epk-rap', function($user){
+          return $user->hasAnyRoles(['rap', 'admin']);
+        });
+        /* ^
+        Juiste EPK RAP content worden weergegeven aan de users met de rollen: 'rap' of admin
+        */
+        Gate::define('manage-epk-hardstyle', function($user){
+          return $user->hasAnyRoles(['hardstyle', 'admin']);
+        });
+        /* ^
+        Juiste EPK hardstyle content worden weergegeven aan de users met de rollen: 'hardstyle' of admin
+        */
     }
 }

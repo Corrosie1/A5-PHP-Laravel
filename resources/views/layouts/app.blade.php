@@ -81,14 +81,11 @@
                                     <button class='btn'> EPK </button><span class="caret"></span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                  <a class="dropdown-item" href="#">
-                                    Pop EPK
+                                  <a class="dropdown-item" href="{{route('epk.index')}}">
+                                    EPK Overzicht
                                   </a>
-                                  <a class="dropdown-item" href="#">
-                                    Rap EPK
-                                  </a>
-                                  <a class="dropdown-item" href="#">
-                                    Hardstyle EPK
+                                  <a class="dropdown-item" href="{{route('epk.create')}}">
+                                    EPK Aanmaken
                                   </a>
                                 </div>
                             </li>
