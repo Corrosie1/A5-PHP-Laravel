@@ -8,12 +8,6 @@ use App\Epk;
 use Auth;
 use Gate;
 
-function multiexplode ($delimiters, $string) {
-    $ready = str_replace($delimiters, $delimiters[0], $string);
-    $launch = explode($delimiters[0], $ready);
-    return  $launch;
-}
-
 class EpkController extends Controller {
 
     public function multiexplode ($delimiters, $string) {

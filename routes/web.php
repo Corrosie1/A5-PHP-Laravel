@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,13 +12,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Auth::routes();
 
-Route::get('/', 'WelcomeController@index')->name('welcome');
-Route::get('epk/{id}', 'EpkController@show');
-
 Route::group(['middleware' => ['auth']], function(){
-  Route::resource('epk', 'EpkController', ['except' => ['show']]);
+  Route::resource('epk', 'EpkController');
   /* ^
   alles routes voor epk, hieronder vallen de volgende routes:
   - epk.store
@@ -53,3 +50,9 @@ Route::group(['middleware' => ['auth']], function(){
   // ^ route voor /home
 });
 // Routes waarvoor je ingelogd moet zijn!
+
+Route::group(['middleware' => ['guest']], function(){
+  Route::get('guest/{id}', 'WelcomeController@show')->name('guest.show');
+  Route::get('/', 'WelcomeController@index')->name('guest');
+  Route::get('guest', 'WelcomeController@index')->name('guest');
+});
