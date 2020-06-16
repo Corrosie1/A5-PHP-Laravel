@@ -52,7 +52,8 @@ Route::group(['middleware' => ['auth']], function(){
 // Routes waarvoor je ingelogd moet zijn!
 
 Route::group(['middleware' => ['guest']], function(){
-  Route::get('guest/{id}', 'WelcomeController@show')->name('guest.show');
   Route::get('/', 'WelcomeController@index')->name('guest');
   Route::get('guest', 'WelcomeController@index')->name('guest');
+  Route::get('guest/{id}', 'WelcomeController@show')->name('guest.show');
 });
+/* ^ guest routes, deze routes worden gebruikt wanneer de gebruiker niet ingelogd is.

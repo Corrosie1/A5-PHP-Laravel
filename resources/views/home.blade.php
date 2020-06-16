@@ -37,9 +37,10 @@
                     </p>
                     <p><h6><strong>Graag het volgende testen bij dit onderdeel</strong></h6><small>
                       <ul>
-                        <li></li>
-                        <li></li>
-                        <li></li>
+                        <li>Aanmaken van een EPK (probeer dit in verschillende rollen)</li>
+                        <li>Verwijderen van een EPK (probeer dit in verschillende rollen)</li>
+                        <li>Aanpassen van een EPK (probeer dit in verschillende rollen)</li>
+                        <li>showen van een EPK, hierbij gebruik maken van verschillende achtergronden/tekstkleuren etc.</li>
                       </ul>
                     </small></p>
                     <div>
@@ -65,7 +66,9 @@
             <img class="rounded" width="150" src="{{ asset('images/pop.jpg') }}">
             <p>
               <small>
-                Micheal Jackson
+                <strong>Micheal Jackson</strong><br>
+                #King of pop, #legend, #BillieJean, <br>
+                #thriller, #blackOrWhite, #smoothCriminal
               </small>
             </p>
           </div>
@@ -74,7 +77,9 @@
             <img class="rounded" width="200" src="{{ asset('images/rap.jpg') }}">
             <p>
               <small>
-                Eminem
+                <strong>Eminem</strong><br>
+                #Rap God, #whiteRap,<br>
+                #LoveTheWayYouLie, #MTV, #slimShady
               </small>
             </p>
           </div>
@@ -83,7 +88,9 @@
             <img class="rounded" src="{{ asset('images/hardstyle.jpg') }}">
             <p>
               <small>
-                Yellow Claw
+                <Strong>Yellow Claw<Strong><br>
+                  #beastMode, #catchMe, #tillItHurts,<br>
+                  #shotgun, #goodDay, #thunder, #amsterDamned
               </small>
             </p>
           </div>
